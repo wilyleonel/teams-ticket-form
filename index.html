@@ -1,107 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
+    <title>Formulario Tickets</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Ticket - Teams</title>
-    
-    <!-- SDK de Microsoft Teams (OBLIGATORIO) -->
-    <script 
-        src="https://statics.teams.cdn.office.net/sdk/v1.11.0/js/MicrosoftTeams.min.js" 
-        integrity="sha384-SCVF3m7OvnfBFeQJjiqSq5J1QpXjDIKYItOE+E4riOcixboO1eK2D5pPbv8qJ6d" 
-        crossorigin="anonymous">
-    </script>
-    
-    <!-- Estilos -->
-    <link rel="stylesheet" href="styles/form.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="assets/icon.png" type="image/png">
+    <script src="https://statics.teams.cdn.office.net/sdk/v1.11.0/js/MicrosoftTeams.min.js"></script>
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="assets/logo.png" alt="Logo" class="logo" width="50">
-            <h1>🎫 Crear Nuevo Ticket</h1>
-            <p class="subtitle">Complete el formulario para crear un ticket de soporte</p>
-        </div>
-
-        <form id="ticketForm" class="ticket-form">
-            <!-- Campo: Título -->
+        <h1>📝 Crear Ticket</h1>
+        <form id="ticketForm">
             <div class="form-group">
-                <label for="titulo" class="required">Título del Ticket</label>
-                <input 
-                    type="text" 
-                    id="titulo" 
-                    name="titulo"
-                    placeholder="Ej: Problema con la impresora HP"
-                    maxlength="100"
-                    required>
-                <small class="hint">Describa brevemente el problema</small>
+                <label>Título:</label>
+                <input type="text" id="titulo" required>
             </div>
-
-            <!-- Campo: Descripción -->
             <div class="form-group">
-                <label for="descripcion" class="required">Descripción Detallada</label>
-                <textarea 
-                    id="descripcion" 
-                    name="descripcion"
-                    rows="4"
-                    placeholder="Describa el problema con todos los detalles posibles..."
-                    maxlength="1000"
-                    required></textarea>
-                <small class="hint">Incluya pasos para reproducir el problema</small>
+                <label>Descripción:</label>
+                <textarea id="descripcion" required></textarea>
             </div>
-
-            <!-- Campo: Prioridad -->
             <div class="form-group">
-                <label for="prioridad" class="required">Prioridad</label>
-                <select id="prioridad" name="prioridad" required>
-                    <option value="" disabled selected>Seleccione una prioridad</option>
-                    <option value="baja">🟢 Baja - Problema menor</option>
-                    <option value="media">🟡 Media - Problema estándar</option>
-                    <option value="alta">🟠 Alta - Bloquea trabajo parcial</option>
-                    <option value="urgente">🔴 Urgente - Bloquea trabajo completamente</option>
+                <label>Prioridad:</label>
+                <select id="prioridad" required>
+                    <option value="baja">Baja</option>
+                    <option value="media" selected>Media</option>
+                    <option value="alta">Alta</option>
+                    <option value="urgente">Urgente</option>
                 </select>
             </div>
-
-            <!-- Campo: Categoría (opcional) -->
-            <div class="form-group">
-                <label for="categoria">Categoría</label>
-                <select id="categoria" name="categoria">
-                    <option value="" selected>Sin categoría</option>
-                    <option value="hardware">🖥️ Hardware</option>
-                    <option value="software">💾 Software</option>
-                    <option value="red">🌐 Red/Internet</option>
-                    <option value="cuenta">👤 Cuenta/Acceso</option>
-                    <option value="otro">❓ Otro</option>
-                </select>
-            </div>
-
-            <!-- Botones -->
-            <div class="form-actions">
-                <button type="button" id="cancelBtn" class="btn-secondary">
-                    Cancelar
-                </button>
-                <button type="submit" id="submitBtn" class="btn-primary">
-                    <span id="submitText">Crear Ticket</span>
-                    <span id="loadingSpinner" class="spinner" style="display: none;">⏳</span>
-                </button>
-            </div>
-
-            <!-- Mensaje de error -->
-            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            <button type="submit">Crear Ticket</button>
         </form>
-
-        <div class="footer">
-            <p class="note">
-                <strong>Nota:</strong> El ticket será asignado automáticamente al equipo de soporte.
-                Recibirá una confirmación por Teams.
-            </p>
-        </div>
     </div>
-
-    <!-- JavaScript -->
-    <script src="scripts/form.js"></script>
+    <script src="form.js"></script>
 </body>
 </html>
